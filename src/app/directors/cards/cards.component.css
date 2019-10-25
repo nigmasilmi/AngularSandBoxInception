@@ -1,0 +1,56 @@
+body{
+    background-color: rgb(50, 4, 56)
+}
+app-cards{
+    background-color: rgb(50, 4, 56)
+
+}
+
+.card-img-top{
+    border: solid black 2pt;
+    padding: 2%;
+
+}
+
+.card{
+    margin: 1%;
+}
+
+.card-body{
+    background: rgba(42, 11, 43, 0.9);
+    color: whitesmoke;
+    -webkit-box-shadow: 1px -1px 5px 3px rgba(27,2,43,0.49);
+    -moz-box-shadow: 1px -1px 5px 3px rgba(27,2,43,0.49);
+    box-shadow: 1px -1px 5px 3px rgba(27,2,43,0.49);
+}
+
+.img-fluid{
+    max-width: 100%;
+    height: auto;
+}
+
+.viewTitle{
+background:  rgba(42, 11, 43, 1);
+color: white;
+justify-content: center;
+align-items: center;
+font-weight: bold;
+}
+
+.directorsDeck{
+    align-items: center;
+    align-content: center;
+    border: 3px solid rgb(51, 29, 47);
+    background: rgb(77, 61, 61);
+}
+
+.btn-danger{
+    background: #753b6c;
+    margin-left: 37%;
+    border: whitesmoke;
+}
+
+.btn-danger:hover{
+    background: #852376;
+    border: whitesmoke;
+}

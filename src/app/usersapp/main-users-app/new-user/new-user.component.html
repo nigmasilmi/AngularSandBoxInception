@@ -1,0 +1,12 @@
+<div>
+<form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+    <label for="userName">Nombre</label>
+    <input type="text" class="form-control" id="userName" [(ngModel)]="newUser.name" name="nameUser">
+    <label for="userLastname">Apellido</label>
+    <input type="text" class="form-control" id="userLastname" [(ngModel)]="newUser.lastname" name="nameLastname">
+    <label for="userAvatar">Avatar</label>
+    <input type="text" class="form-control" id="userAvatar" [(ngModel)]="newUser.img-source" name="nameImgSrc">
+    <input class="btn btn-info" type="submit" value="Registrar">
+</form>
+
+</div>

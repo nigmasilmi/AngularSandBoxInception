@@ -1,0 +1,8 @@
+body{
+    background-color: rgb(50, 4, 56)
+}
+
+navbar-brand>img {
+    width: 100% \9; 
+    max-width: 10%;
+}

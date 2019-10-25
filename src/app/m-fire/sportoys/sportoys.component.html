@@ -1,0 +1,49 @@
+<div *ngIf="sportoys?.length > 0; else noSportoys" class="container sportBack">
+  <div class="listHeading">Sport Toys Favorite Collection List</div>
+  <ul class="list-group">
+    <li data-id="{{item.id}}" class="list-group-item" *ngFor="let item of sportoys">
+      <div>
+        <p class="small mute"><span class="badge badge-pill badge-secondary p-2">Id:</span> {{ item.id }} </p>
+        <p><span class="badge badge-primary p-2">Name:</span> {{ item.name }} </p>
+        <p><span class="badge badge-primary p-2">Kind:</span> {{ item.kind }}</p>
+        <p><span class="badge badge-primary p-2">Sport:</span> {{ item.sport }}</p>
+        <p><span class="badge badge-primary p-2">Brand:</span> {{ item.brand }}</p>
+        <!-- <p class="muted"><span class="alert alert-info">Id:</span>  {{ item.id }}</p> -->
+      </div>
+      <div class="editIcon">
+        <a routerLink="/mfire"><i (click)="editItem($event, item)" class="fas fa-edit"></i></a>
+      </div>
+      <div *ngIf="editState && itemToEdit.id == item.id">
+        <form (ngSubmit)="editItem(item)">
+          <div class="row">
+            <label for="toyName">Name</label>
+            <input type="text" class="form-control" id="toyName" [(ngModel)]="item.name" name="tName">
+            <label for="toyKind">Kind</label>
+            <input type="text" class="form-control" id="toyKind" [(ngModel)]="item.kind" name="tKind">
+            <label for="toyBrand">Brand</label>
+            <input type="text" class="form-control" id="toyBrand" [(ngModel)]="item.brand" name="tBrand">
+            <label for="toySport">Sport</label>
+            <input type="text" class="form-control" id="toySport" [(ngModel)]="item.sport" name="tSport">
+            <div class="row">
+              <div class="col-5">
+                <input (click)="updateItem(item)" class="btn btn-warning" type="submit" value="Update Toy">
+              </div>
+              <div class="col-5">
+              <button class="btn btn-danger" (click)="deleteSportoy(item)">Delete Toy</button>
+            </div>
+          <div class="col-2">
+            <a><i (click)="toggleState()" class="fas fa-compress-arrows-alt"></i></a>
+          </div>
+        </div>
+      </div>
+      </form>
+
+</div>
+</li>
+</ul>
+</div>
+
+<ng-template #noSportoys>
+  <hr>
+  <h5>Ther are no items to show</h5>
+</ng-template>

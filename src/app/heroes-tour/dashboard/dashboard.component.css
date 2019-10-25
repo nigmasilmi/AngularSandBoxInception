@@ -1,0 +1,99 @@
+/* DashboardComponent's private CSS styles */
+.herosBoard{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    margin: 0 30%;
+}
+
+h3 {
+  display: block;
+  color: rgb(243, 47, 21);
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+  background: whitesmoke;
+  width: 80%;
+  border-radius: 3px;
+  background: whitesmoke;
+  box-shadow: -4px 21px 21px -13px rgb(20, 20, 20);
+  text-align: center;
+  margin: 5% auto;
+  font-weight: bold;
+}
+
+[class*='col-'] {
+  float: left;
+  padding-right: 20px;
+  padding-bottom: 20px;
+}
+
+[class*='col-']:last-of-type {
+  padding-right: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+*,
+*:after,
+*:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+
+
+h4 {
+  position: relative;
+}
+
+.grid {
+  margin: 0;
+}
+
+.col-1-4 {
+  width: 25%;
+}
+
+.module {
+  padding: 20px;
+  text-align: center;
+  color: whitesmoke;
+  max-height: 120px;
+  min-width: 120px;
+  background-color: #c71616;
+  border-radius: 2px;
+}
+
+.module:hover {
+  background-color: rgb(170, 73, 73);
+  cursor: pointer;
+  color: whitesmoke;
+}
+
+.grid-pad {
+  padding: 10px 0;
+}
+
+.grid-pad>[class*='col-']:last-of-type {
+  padding-right: 20px;
+}
+
+@media (max-width: 600px) {
+  .module {
+    font-size: 10px;
+    max-height: 75px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    margin: 0;
+  }
+
+  .module {
+    min-width: 60px;
+  }
+}

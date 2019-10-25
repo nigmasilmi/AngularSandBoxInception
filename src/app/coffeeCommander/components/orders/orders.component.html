@@ -1,0 +1,15 @@
+<form [formGroup]="this.orderService.form">
+  <input type="text" placeholder="Order Number" formControlName="orderNumber" class="form-control">
+  <input type="text" placeholder="Customer Name" formControlName="customerName" class="form-control">
+  <button class="btn btn-light m-2" *ngFor="let cof of coffees" (click)="addCoffe(cof)">
+    {{cof.name}}
+  </button>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let coffee of coffeeOrder">
+      <span>{{coffee.name}}</span>
+      <i (click)="removeCoffee(coffee)" class="far fa-trash-alt"></i>
+
+    </li>
+  </ul>
+  <button class="btn btn-warning m-2" (click)="onSubmit()">Send Order</button>
+</form>

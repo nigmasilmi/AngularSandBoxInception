@@ -1,0 +1,23 @@
+<app-navbar></app-navbar>
+
+<div class="container viewTitle">
+<h3 class="text-center">She, The Director</h3>
+</div>
+<div class="container ">
+  <div class="row directorsDeck">
+    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 " *ngFor="let she of sheDirData">
+      <div class="card" style="max-width: 18rem;">
+        <img src="{{she.image}}" class="card-img-top img-fluid" alt="{{ she.name }}">
+        <div class="card-body">
+          <h5 class="card-title">{{she.name}}</h5>
+          <p class="card-text">{{she.bio}}</p>
+          <button (click)="herMoviesView()" class="btn btn-danger">She has Directed...</button>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted"> <a href="{{she.www}}">{{she.name}}'s IMDB Bio</a></small>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,17 @@
+.sportBack {
+  background: whitesmoke;
+  padding: 3%;
+}
+
+  
+.listHeading {
+    border-bottom-right-radius: 6%;
+    background-color: rgb(228, 15, 15);
+    color: white;
+    font-weight: bolder;
+    padding: 1%;
+    text-align: center;
+    -webkit-box-shadow: 10px 10px 31px 10px rgba(0,0,0,0.55);
+    -moz-box-shadow: 10px 10px 31px 10px rgba(0,0,0,0.55);
+    box-shadow: 10px 10px 31px 10px rgba(0,0,0,0.55);
+  }
