@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {OrdersService} from './../../shared/orders.service';
-import { Coffee } from "./../../models/Coffee";
+import { OrdersService } from './../../shared/orders.service';
+import { Coffee } from './../../models/Coffee';
 
 @Component({
   selector: 'app-orders',
@@ -9,36 +9,36 @@ import { Coffee } from "./../../models/Coffee";
 })
 export class OrdersComponent implements OnInit {
 
-  coffees:Coffee[];
-  coffeeOrder:Coffee[]=[];
+  coffees: Coffee[];
+  coffeeOrder: Coffee[] = [];
 
-  constructor(private orderService:OrdersService) { }
+  constructor(public orderService: OrdersService) { }
 
   ngOnInit() {
-     this.orderService.getCoffees().subscribe(coffeesComing=>{
-      this.coffees=coffeesComing
-    })
+    this.orderService.getCoffees().subscribe(coffeesComing => {
+      this.coffees = coffeesComing;
+    });
   }
-  addCoffe(coffee:Coffee){
+  addCoffe(coffee: Coffee) {
     this.coffeeOrder.push(coffee);
   }
 
-  removeCoffee(coffeeToRemove:Coffee){
-    let index = this.coffeeOrder.indexOf(coffeeToRemove);
-    if(index > -1){
+  removeCoffee(coffeeToRemove: Coffee) {
+    const index = this.coffeeOrder.indexOf(coffeeToRemove);
+    if (index > -1) {
       this.coffeeOrder.splice(index, 1);
     }
   }
 
-  onSubmit(){
+  onSubmit() {
     console.log('is submitting');
     this.orderService.form.value.coffeeOrder = this.coffeeOrder;
-    let data = this.orderService.form.value;
-    
-   this.orderService.createCoffeeOrder(data)
-       .then(res => {
-           console.log('is done');
-       });
+    const data = this.orderService.form.value;
+
+    this.orderService.createCoffeeOrder(data)
+      .then(res => {
+        console.log('is done');
+      });
   }
 
   // addOrder(){

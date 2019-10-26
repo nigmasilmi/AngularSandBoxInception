@@ -18,7 +18,7 @@ export class SportoysService {
     // this.sportoys = this.afs.collection('sporToys').valueChanges();
     this.sportoyCollec = this.afs.collection('sporToys', ref => ref.orderBy('sport', 'asc'));
 
-    //to access the data with their id  we use snapshotChanges
+    // to access the data with their id  we use snapshotChanges
     this.sportoys = this.afs.collection<Sportoy>('sporToys').snapshotChanges().pipe(
       map(changes => changes.map(a => {
         const data = a.payload.doc.data() as Sportoy;
@@ -43,25 +43,26 @@ export class SportoysService {
     this.sportoyCollec.add(sportoy);
   }
 
-  deleteSportoyInService(item:any) {
-    this.sportoyDoc = this.afs.doc<Sportoy>(`sporToys/${item.id}`);
+  deleteSportoyInService(item: any) {
+    this.sportoyDoc = this.afs.doc(`sporToys/${item.id}`);
     // console.log(this.sportoyDoc);
     this.sportoyDoc.delete();
   }
 
-  editItemInService(item:any){
-    this.sportoyDoc = this.afs.doc<Sportoy>(`sporToys/${item.id}`);
+  editItemInService(item: any) {
+    // this.sportoyDoc = this.afs.doc<Sportoy>(`sporToys/${item.id}`);
+    this.sportoyDoc = this.afs.doc(`sporToys/${item.id}`);
     // this.sportoyDoc.update();
-    console.log('this.sportoyDoc: ',this.sportoyDoc);
+    console.log('this.sportoyDoc: ', this.sportoyDoc);
     console.log('llega hasta el servicio');
 
   }
 
-  updateItemInService(item){
-    //identificar el id
+  updateItemInService(item) {
+    // identificar el id
     this.sportoyDoc = this.afs.doc<Sportoy>(`sporToys/${item.id}`);
     this.sportoyDoc.update(item);
-    //hacer update con los datos tal
+    // hacer update con los datos tal
   }
 }
 

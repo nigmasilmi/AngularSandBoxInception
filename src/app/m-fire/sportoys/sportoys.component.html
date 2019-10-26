@@ -1,7 +1,7 @@
 <div *ngIf="sportoys?.length > 0; else noSportoys" class="container sportBack">
-  <div class="listHeading">Sport Toys Favorite Collection List</div>
+  <div @fadeMore class="listHeading">Sport Toys Favorite Collection List</div>
   <ul class="list-group">
-    <li data-id="{{item.id}}" class="list-group-item" *ngFor="let item of sportoys">
+    <li @fade data-id="{{item.id}}" class="list-group-item" *ngFor="let item of sportoys">
       <div>
         <p class="small mute"><span class="badge badge-pill badge-secondary p-2">Id:</span> {{ item.id }} </p>
         <p><span class="badge badge-primary p-2">Name:</span> {{ item.name }} </p>
@@ -13,8 +13,8 @@
       <div class="editIcon">
         <a routerLink="/mfire"><i (click)="editItem($event, item)" class="fas fa-edit"></i></a>
       </div>
-      <div *ngIf="editState && itemToEdit.id == item.id">
-        <form (ngSubmit)="editItem(item)">
+      <div *ngIf="editState">
+        <form @fadeMore (ngSubmit)="updateItem(item)">
           <div class="row">
             <label for="toyName">Name</label>
             <input type="text" class="form-control" id="toyName" [(ngModel)]="item.name" name="tName">
@@ -26,13 +26,13 @@
             <input type="text" class="form-control" id="toySport" [(ngModel)]="item.sport" name="tSport">
             <div class="row">
               <div class="col-5">
-                <input (click)="updateItem(item)" class="btn btn-warning" type="submit" value="Update Toy">
+                <input (click)="editItem($event, item)" class="btn btn-warning" type="submit" value="Update Toy">
               </div>
               <div class="col-5">
-              <button class="btn btn-danger" (click)="deleteSportoy(item)">Delete Toy</button>
+              <button class="btn btn-danger" (click)="deleteSportoy($event, item)">Delete Toy</button>
             </div>
           <div class="col-2">
-            <a><i (click)="toggleState()" class="fas fa-compress-arrows-alt"></i></a>
+            <a><i (click)="clearState()" class="fas fa-compress-arrows-alt"></i></a>
           </div>
         </div>
       </div>
@@ -45,5 +45,5 @@
 
 <ng-template #noSportoys>
   <hr>
-  <h5>Ther are no items to show</h5>
+  <h5>Fetching Items...</h5>
 </ng-template>

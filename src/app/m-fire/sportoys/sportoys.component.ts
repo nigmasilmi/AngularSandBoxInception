@@ -1,24 +1,51 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
 import { SportoysService } from './sportoys.service';
 import { Sportoy } from 'src/app/model/sportoy';
-import {NgForm} from '@angular/forms';
+import { trigger, state, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-sportoys',
   templateUrl: './sportoys.component.html',
-  styleUrls: ['./sportoys.component.css']
+  styleUrls: ['./sportoys.component.css'],
+  animations: [trigger('fade', [
+    state('void', style({
+      backgroundColor: 'blue',
+      opacity: 0
+    })),
+
+    transition('void => *', [
+      animate(1000)
+    ]),
+    transition('* => void', [
+      animate(2000)
+    ]),
+  ]
+  ),
+  trigger('fadeMore', [
+    transition('void => *', [style({
+      transform: 'translateX(100%)',
+      opacity: 0
+    }),
+      animate(200)
+    ]),
+    transition('* => void', [style({
+      transform: 'translateY(0)',
+      opacity: 0
+    }),
+      animate(200)
+    ]),
+
+  ])]
 })
 export class SportoysComponent implements OnInit {
   sportoys: Sportoy[];
-  editState: boolean = false;
-  itemToEdit : Sportoy;
+  editState = false;
+  itemToEdit: Sportoy;
 
   constructor(private sportService: SportoysService) {
-    this.sportService.getSportoys().subscribe(toysComing=>{
-      this.sportoys=toysComing;
-    })
+    this.sportService.getSportoys().subscribe(toysComing => {
+      this.sportoys = toysComing;
+    });
   }
 
   ngOnInit() {
@@ -27,30 +54,28 @@ export class SportoysComponent implements OnInit {
         this.sportoys = sportoysComing);
   }
 
-  deleteSportoy(item){
-    this.itemToEdit = null;
-    this.editState = false;
+  deleteSportoy(event, item) {
+    this.clearState();
     this.sportService.deleteSportoyInService(item);
   }
 
-  editItem(event, item){
-    // this.sportService.editItemInService(item);
+  editItem(event, item) {
     this.editState = true;
     this.itemToEdit = item;
-    console.log('boolean: ', this.editState);
-    console.log('item: ', this.itemToEdit);
+
   }
 
-  toggleState(){
-    // this.editState = !this.editState;
+ clearState() {
+    this.itemToEdit = null;
     this.editState = false;
   }
 
-  updateItem(item){
-    this.sportService.updateItemInService(item);
-    this.toggleState();
+  updateItem(itemToEdit) {
+    console.log('itemToEdit', itemToEdit);
+    this.sportService.updateItemInService(itemToEdit);
+    this.clearState();
   }
-  
-  }
+
+}
 
 

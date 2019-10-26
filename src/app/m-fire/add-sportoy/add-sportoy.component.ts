@@ -9,28 +9,28 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./add-sportoy.component.css']
 })
 export class AddSportoyComponent implements OnInit {
-  sportoyToAdd:Sportoy={
-    name:'',
-    kind:'',
-    brand:'',
-    sport:''
+  sportoyToAdd: Sportoy = {
+    name: '',
+    kind: '',
+    brand: '',
+    sport: ''
   };
 
-  constructor(private addSportoySrv:SportoysService) { }
+  constructor(private addSportoySrv: SportoysService) { }
 
   ngOnInit() {
   }
 
-  onSubmit(f: NgForm){
-    if(this.sportoyToAdd.name != '' && this.sportoyToAdd.kind != '' && this.sportoyToAdd.brand != '' && this.sportoyToAdd.sport != ''){
+  onSubmit(f: NgForm) {
+    if (this.sportoyToAdd.name !== '' && this.sportoyToAdd.kind !== '' && this.sportoyToAdd.brand !== '' && this.sportoyToAdd.sport != ''){
       this.addSportoySrv.addToy(this.sportoyToAdd);
-      //clear the form
+      // clear the form
       this.sportoyToAdd.name = '';
       this.sportoyToAdd.kind = '';
       this.sportoyToAdd.brand = '';
       this.sportoyToAdd.sport = '';
     }
-      
+
     }
 
 }
